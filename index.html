@@ -1,0 +1,485 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Upatto Academy</title>
+    <link rel="icon" type="image/png" href="../Upatto/logo.png">
+<style>
+/* =================== */
+/* GLOBAL STYLES */
+/* =================== */
+*{margin:0;padding:0;box-sizing:border-box;font-family:Arial,sans-serif;}
+body{scroll-behavior:smooth; padding-top:80px;}
+
+/* Navbar */
+.navbar{
+  position:fixed;
+  top:0;
+  width:100%;
+  background:#0a443f;
+  padding:20px 40px;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  z-index:1000;
+}
+.brand{
+  display:flex;
+  align-items:center;
+  gap:10px;
+}
+.brand h2{
+  color:#86D3FF;
+  font-weight:bold;
+  font-size:22px;
+}
+.brand img{
+  width:40px;
+  height:40px;
+  object-fit:contain;
+}
+.navbar ul{
+  list-style:none;
+  display:flex;
+  gap:20px;
+}
+.navbar a{
+  color:#86D3FF;
+  text-decoration:none;
+  font-weight:bold;
+  transition:0.3s;
+}
+.navbar a:hover{color:#ffcc00;}
+
+/* Hero Section */
+.hero{
+  height:100vh;
+  background:linear-gradient(135deg,#0a1f44,#79efff);
+  color:white;
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+  align-items:center;
+  text-align:center;
+  padding:0 40px;
+}
+.hero h1{
+  font-size:48px;
+  margin-bottom:20px;
+  animation:fadeUp 1.2s ease;
+}
+.hero p{
+  font-size:20px;
+  line-height:1.8;
+  margin-bottom:15px;
+  animation:fadeUp 1.5s ease;
+}
+
+/* Button */
+.btn{
+  padding:12px 30px;
+  border:none;
+  background:#ffcc00;
+  font-weight:bold;
+  border-radius:25px;
+  cursor:pointer;
+  transition:0.3s;
+  text-decoration:none;   
+  color:#000;
+  display:inline-block;
+}
+.btn:hover{transform:scale(1.1);}
+
+/* Sections */
+.section{
+  padding:100px 60px;
+  text-align:center;
+}
+.dark{background:#f2f5fa; color:#0a1f44;}
+
+/* About Section full-screen */
+.about-hero{
+  height:100vh; 
+  background:white;
+  color:#0a1f44;
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+  align-items:center;
+  text-align:center;
+  padding:0 40px;
+}
+.about-hero h1{
+  font-size:36px;
+  margin-bottom:20px;
+}
+.about-hero p{
+  font-size:18px;
+  line-height:1.8;
+  margin-bottom:15px;
+}
+.about-hero ul{
+  list-style:disc;
+  margin-left:20px;
+  line-height:1.8;
+  margin-bottom:15px;
+}
+
+/* Courses */
+.course-grid{
+  margin-top:40px;
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+  gap:25px;
+}
+.course-card{
+  background:white;
+  padding:25px;
+  border-radius:15px;
+  box-shadow:0 10px 25px rgba(0,0,0,0.1);
+  transition:0.4s;
+  opacity:0;
+  transform:translateY(40px);
+}
+.course-card:hover{
+  transform:translateY(-10px) scale(1.03);
+}
+
+/* Footer */
+footer{
+  background:#0a1f44;
+  color:white;
+  text-align:center;
+  padding:20px;
+}
+
+/* Animation */
+@keyframes fadeUp{
+  from{opacity:0;transform:translateY(40px);}
+  to{opacity:1;transform:translateY(0);}
+}
+.fade-up{
+  opacity:0;
+  transform:translateY(40px);
+  transition:all 0.8s ease-out;
+}
+.fade-up.visible{
+  opacity:1;
+  transform:translateY(0);
+}
+
+/* ===================== */
+/* RESPONSIVE FOR MOBILE */
+/* ===================== */
+@media (max-width: 768px){
+
+  /* Navbar */
+  .navbar{
+    flex-direction:column;
+    padding:10px 15px;
+    gap:10px;
+  }
+  .navbar ul{
+    flex-wrap:wrap;
+    justify-content:center;
+    gap:12px;
+  }
+  .brand h2{
+    font-size:18px;
+  }
+
+  /* Hero Sections */
+  .hero, .about-hero{
+    height:auto;
+    min-height:100vh;
+    padding:120px 20px 60px;
+  }
+  .hero h1{
+    font-size:28px;
+  }
+  .hero p{
+    font-size:16px;
+  }
+  .about-hero h1{
+    font-size:26px;
+  }
+  .about-hero p{
+    font-size:15px;
+  }
+
+  /* Courses */
+  #courses{
+    height:auto !important;
+    padding:120px 15px 60px !important;
+  }
+  .course-grid{
+    grid-template-columns:1fr;
+  }
+  .course-card{
+    padding:20px;
+  }
+
+  /* Contact Section */
+  #contact{
+    height:auto !important;
+    padding:120px 15px 60px !important;
+  }
+  #contact > div{
+    flex-direction:column !important;
+    height:auto !important;
+  }
+  #contact h2{
+    font-size:26px !important;
+  }
+  #contact p{
+    font-size:14px !important;
+  }
+  iframe{
+    width:100% !important;
+    height:250px !important;
+  }
+
+  /* Buttons */
+  .btn{
+    padding:10px 22px;
+    font-size:14px;
+  }
+}
+</style>
+</head>
+<body>
+
+<!-- Navbar -->
+<div class="navbar"> 
+  <div class="brand">
+    <img src="../Upatto/logo.png" alt="Logo">
+    <h2>Upatto Academy</h2>
+  </div>
+  <ul>
+    <li><a href="#home">Home</a></li>
+    <li><a href="#about">About</a></li>
+    <li><a href="#courses">Courses</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+</div>
+
+<!-- Home Section -->
+<section id="home" class="hero fade-up">
+  <h1>Build Your IT Career With Us</h1>
+  <p>Professional IT Training for Students</p>
+  <a class="btn" href="https://wa.me/8801783982362?text=Hello%20I%20want%20to%20enroll%20in%20your%20IT%20courses" target="_blank">
+    Enroll Now
+  </a>
+</section>
+
+<!-- About Section -->
+<section id="about" class="about-hero" style="background:#f2f5fa ">
+  <h1 class="fade-up">আমাদের প্রতিষ্ঠান সম্বন্ধে</h1>
+
+  <p class="fade-up">
+    <strong>Upatto Academy</strong> শিক্ষার্থীদের জন্য মানসম্মত ও ব্যবহারিক আইটি শিক্ষা প্রদান করে। 
+    আমরা বিশ্বাস করি শুধুমাত্র বইয়ের জ্ঞান যথেষ্ট নয়—কার্যকরী দক্ষতা ও বাস্তব অভিজ্ঞতা অর্জন করা শিক্ষার্থীর ভবিষ্যতের জন্য অপরিহার্য। 
+    তাই আমাদের কোর্সগুলো ডিজাইন করা হয়েছে যাতে শিক্ষার্থীরা কম্পিউটার ও সফটওয়্যারের মূল ধারণা থেকে শুরু করে বাস্তব জীবনের প্রয়োগ পর্যন্ত শিখতে পারে।
+  </p>
+
+  <p class="fade-up">আমাদের প্রতিষ্ঠান মূলত তিনটি গুরুত্বপূর্ণ ক্ষেত্রের ওপর গুরুত্ব দেয়:</p>
+
+  <ul class="fade-up">
+    <h4><strong>প্রযুক্তি ও কম্পিউটার শিক্ষা:</strong> MS Office, ICT, ডেটা বিশ্লেষণ ও প্রোগ্রামিং শেখানো।</h4>
+    <h4><strong>প্রায়োগিক দক্ষতা:</strong> শিক্ষার্থীরা হাতে কলমে প্রজেক্ট এবং বাস্তব উদাহরণের মাধ্যমে শেখে।</h4>
+    <h4><strong>ব্যক্তিগত ও পেশাগত উন্নয়ন:</strong> সময় ব্যবস্থাপনা, কমিউনিকেশন এবং প্রফেশনাল আচরণ শিখানো।</h4>
+  </ul>
+
+  <p class="fade-up">
+    <strong>Upatto Academy</strong> তে আমরা প্রতিটি শিক্ষার্থীকে আত্মনির্ভর এবং প্রযুক্তিতে দক্ষ করে তোলার জন্য প্রতিশ্রুতিবদ্ধ। 
+    আমাদের লক্ষ্য শিক্ষার্থীদের শুধু শিক্ষিত নয়, বরং প্রতিযোগিতামূলক বিশ্বে সফল ও আত্মবিশ্বাসী প্রফেশনাল হিসেবে গড়ে তোলা। 
+    এখানে পড়াশোনা করার মাধ্যমে শিক্ষার্থীরা শুধু জ্ঞান অর্জন করবে না, বরং তাদের ভবিষ্যতের জন্য শক্তিশালী ভিত্তি তৈরি করবে।
+  </p>
+</section>
+
+<!-- Courses Section -->
+<section id="courses" class="hero" style="background:#f2f5fa; color:#0a1f44; height:auto; display:flex; flex-direction:column; justify-content:center; align-items:center; text-align:center; padding:120px 40px;">
+  <h2 style="margin-bottom:40px; font-size:36px;">কি কি শিখবে এসব কোর্সে ? </h2>
+  <div class="course-grid" style="width:100%; max-width:1200px;">
+
+    <!-- Course 1 -->
+    
+
+    <div class="course-card fade-up" style="display:flex; flex-direction:column; justify-content:space-between;
+            background:linear-gradient(135deg,#0a1f44,#63afb9);
+            color:white;">
+      <div>
+        <h3>HSC - ICT</h3> <br>
+        <ul style="text-align:left; margin-top:10px; line-height:1.6;">
+          <li>HSC ICT Full Syllabus</li>
+          <li>কমিউনিকেশন ও নেটওয়ার্কিং</li>
+          <li>সংখ্যা পদ্ধতি</li>
+          <li>ওয়েব ডিজাইন ও ডেভেলপ</li>
+          <li>ডেটাবেজ ম্যানেজমেন্ট</li>
+          <li>টেস্টপেপার প্রশ্ন সমাধান</li>
+        </ul>
+      </div>
+      <a class="btn" href="https://wa.me/8801783982362?text=Hello%20I%20want%20to%20enroll%20in%20Inter%20ICT%20course" target="_blank" style="align-self:center; margin-top:15px;">
+        Enroll Now
+      </a>
+    </div>
+
+
+    <div class="course-card fade-up" style="display:flex; flex-direction:column; justify-content:space-between;
+            background:linear-gradient(135deg,#0a1f44,#63afb9);
+            color:white;">
+      <div>
+        <h3>MS - Word</h3><br>
+        <ul style="text-align:left; margin-top:10px; line-height:1.6;">
+          <li>MS Word এর বেসিক-এডভান্স লেভেল ফিচার </li>
+          <li>ডকুমেন্ট ফরম্যাটিং</li>
+          <li>পেইজ স্ট্রাকচার</li>
+          <li>লেটারহেড ও ইনভয়েস তৈরি</li>
+          <li>ডকুমেন্টের ভেতর গাণিতিক সমীকরণ</li>
+          <li>স্টাইলিং</li>
+        </ul> 
+      </div>
+      <a class="btn" href="https://wa.me/8801783982362?text=Hello%20I%20want%20to%20enroll%20in%20MS%20Word%20course" target="_blank" style="align-self:center; margin-top:15px;">
+        Enroll Now
+      </a>
+    </div>
+
+    <!-- Course 2 -->
+    <div class="course-card fade-up" style="display:flex; flex-direction:column; justify-content:space-between;
+            background:linear-gradient(135deg,#0a1f44,#63afb9);
+            color:white;">
+      <div>
+        <h3>MS - Excel</h3><br>
+        <ul style="text-align:left; margin-top:10px; line-height:1.6; color:white;">
+          <li>বেসিক - এডভান্স ফর্মুলা</li>
+          <li>বিগিনার কনসেপ্ট ক্লিয়ার হবে</li>
+          <li>Pivot tables & data analysis</li>
+          <li>Conditional formatting</li>
+          <li>গ্রাফ এন্ড চার্ট</li>
+          <li>Practical exercises</li>
+        </ul>
+      </div>
+      <a class="btn" href="https://wa.me/8801783982362?text=Hello%20I%20want%20to%20enroll%20in%20MS%20Excel%20course" target="_blank" style="align-self:center; margin-top:15px;">
+        Enroll Now
+      </a>
+    </div>
+
+    <!-- Course 3 -->
+    <div class="course-card fade-up" style="display:flex; flex-direction:column; justify-content:space-between;
+            background:linear-gradient(135deg,#0a1f44,#63afb9);
+            color:white;">
+      <div>
+        <h3>MS - PowerPoint</h3><br>
+        <ul style="text-align:left; margin-top:10px; line-height:1.6;">
+          <li>University Presentation </li>
+          <li>Animations & Transitions</li>
+          <li>Theme & Template বানানো</li>
+          <li>Logo ডিজাইন করা</li>
+          <li>প্রফেশনাল CV বানানো</li> 
+          <li>Social Media থাম্বনেইল</li>
+        </ul>
+      </div>
+      <a class="btn" href="https://wa.me/8801783982362?text=Hello%20I%20want%20to%20enroll%20in%20MS%20PowerPoint%20course" target="_blank" style="align-self:center; margin-top:15px;">
+        Enroll Now
+      </a>
+    </div>
+
+    <!-- Course 4 -->
+    
+
+    <!-- Course 5 -->
+    <div class="course-card fade-up" style="display:flex; flex-direction:column; justify-content:space-between;
+            background:linear-gradient(135deg,#0a1f44,#63afb9);
+            color:white;">
+      <div>
+        <h3>FMC</h3><br>
+        <ul style="text-align:left; margin-top:10px; line-height:1.6;">
+          <li>Basic computer concepts</li>
+          <li>MS Office essentials</li>
+          <li>Internet & email usage</li>
+          <li>File management & organization</li>
+          <li>Typing & shortcuts</li>
+          <li>Practical assignments</li>
+        </ul>
+      </div>
+      <a class="btn" href="https://wa.me/8801783982362?text=Hello%20I%20want%20to%20enroll%20in%20FMC%20course" target="_blank" style="align-self:center; margin-top:15px;">
+        Enroll Now
+      </a>
+    </div>
+
+  </div>
+</section>
+
+
+<!-- Contact Section -->
+<!-- Contact Section -->
+<!-- Contact Section -->
+<section id="contact" class="hero" style="background:#f2f5fa; color:#0a1f44; height:100vh; display:flex; justify-content:center; align-items:center; padding:0 40px; box-sizing:border-box;">
+  
+  <div style="display:flex; flex-direction:row; gap:30px; width:100%; max-width:1200px; height:80%; align-items:center;">
+
+    <!-- Left Side: Contact Info -->
+    <div style="flex:1; font-size:7px; line-height:1;">
+      <h2 style="font-size:36px; margin-bottom:20px;">Contact Us</h2><br>
+      
+      <p style="margin:0 0 5px 0;">Contact : 01783982362</p>
+      <p style="margin:0 0 5px 0;">Address : Karatia, Tangail</p>
+      <p style="margin:0 0 15px 0;">Mail: upattoacademy@gmail.com</p>
+      <p style="margin:0 0 5px 0;">Website : www.upattoacademy.com</p><br><br>
+      
+
+      <!-- WhatsApp Button (Bigger) -->
+      <a href="https://wa.me/8801783982362?text=Hello%20I%20want%20to%20contact%20Upatto%20Academy" 
+   target="_blank"
+   style="display:inline-block; padding:20px 40px; background:#25D366; color:white; text-decoration:none; border-radius:30px; font-size:16px; font-weight:bold; transition:0.3s;"
+   
+   onmouseover="this.style.background='#1ebe5d'; this.style.transform='scale(1.08)'; this.style.boxShadow='0 8px 20px rgba(37,211,102,0.4)';"
+   
+   onmouseout="this.style.background='#25D366'; this.style.transform='scale(1)'; this.style.boxShadow='none';">
+   
+   Contact Us on WhatsApp
+</a>
+
+    </div>
+
+    <!-- Right Side: Google Map -->
+    <div style="flex:1; box-shadow:0 10px 25px rgba(0,0,0,0.1); border-radius:15px; overflow:hidden;">
+      <iframe
+        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d536.93335993138!2d89.97808047812458!3d24.223585409720247!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x39fdff0052f954dd%3A0x7126383e015392d!2sLichu%20bagan%20road!5e1!3m2!1sen!2sbd!4v1770457131584!5m2!1sen!2sbd"
+        width="600" height="400" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade">
+      </iframe>
+    </div>
+
+  </div>
+</section>
+
+
+<!-- Footer -->
+<footer>
+  <p>© TechiPy 2026. All Rights Reserved.</p>
+</footer>
+
+<!-- JS for fade-up animation -->
+<script>
+function revealOnScroll(){
+  const elements = document.querySelectorAll('.fade-up');
+  const triggerBottom = window.innerHeight * 0.85;
+
+  elements.forEach(el=>{
+    const top = el.getBoundingClientRect().top;
+    if(top < triggerBottom){
+      el.classList.add('visible');
+    }
+  });
+}
+
+// Initial and scroll check
+window.addEventListener('scroll', revealOnScroll);
+window.addEventListener('load', revealOnScroll);
+</script>
+
+</body>
+</html>
+
+
